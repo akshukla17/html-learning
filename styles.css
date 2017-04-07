@@ -1,0 +1,9 @@
+<style>
+body {
+		background-color: yellow;
+	}
+h1   {color: Black;}
+p    {color: blue;background-color: yellow;}
+p.error{color:red; font-size:30px; border: 2px solid powderblue;}
+h2 {color: yellow,font-size:40px;font-family:arial;background-color:rgb(255,100,200)}
+</style>

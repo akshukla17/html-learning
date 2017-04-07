@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+alert("aaaa");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPositionInMap,showError);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+function showPositionInMap(position){
+	var latlon=position.coords.latitude+","+position.coords.longitude;
+	var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+    +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
+    document.getElementById("demo").innerHTML = "Position coordinates are :<br/>"+"latitude: "+position.coords.latitude+" and longitude: "+position.coords.longitude+"<br/>"+"<img src='"+img_url+"'>";
+}
+
+function showError(error){
+	switch(error.code){
+		case error.PERMISSION_DENIED:
+			x.innerHTML="user denied the request for geolocation";
+			break;
+		case error.POSITION_UNAVAILABLE:
+			x.innerHTML="Location information is unavailable";
+			break;
+		case error.TIMEOUT
+			x.innerHTML=" The request to get user location is time out";
+			break;
+		case error.UNKNOWN
+			x.innerHTM="Unknown error occured";
+			break;
+	}
+}
+</script>
+
+</body>
+</html>
